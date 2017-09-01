@@ -86,9 +86,23 @@ public class AdministrarPersonas {
         bw.close();
     }
     
-    public void escribirArchivo(String destinatario, Persona usuario){
-        FileWriter fw;
-        BufferedWriter bw;
+    public void escribirEnviados(String descripcion, String destinatario, Persona usuario) throws IOException{
+        FileWriter fw = null;
+        BufferedWriter bw = null;
+        File archivo = new File ("./usuarios/"+usuario.getNombre()+"/"+"Enviados"+".txt"); //Tener el archivo
+        try {
+            fw = new FileWriter(archivo, false);
+            bw = new BufferedWriter(fw);
+            bw.write(destinatario+";");
+            bw.write(descripcion+";");
+            bw.flush();
+        } catch (Exception e) {
+        }
+        fw.close();
+        bw.close();
+    }
+    
+    public void escribirNoleidos(){
         
     }
 }

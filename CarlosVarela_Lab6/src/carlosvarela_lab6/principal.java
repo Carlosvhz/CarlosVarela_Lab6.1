@@ -51,6 +51,8 @@ public class principal extends javax.swing.JFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem8 = new javax.swing.JMenuItem();
         pop_opciones = new javax.swing.JPopupMenu();
         Eliminar = new javax.swing.JMenuItem();
         Marcar = new javax.swing.JMenuItem();
@@ -60,19 +62,21 @@ public class principal extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         tf_destinatario = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        ta_descripcion = new javax.swing.JTextArea();
         bt_enviarmensajeUsuario = new javax.swing.JButton();
         jd_enviarMensajeNoUnitec = new javax.swing.JDialog();
         jPanel6 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
-        tf_ingresaNombreEnviarMensaje = new javax.swing.JTextField();
+        tf_ingresaCorreoNoUnitec = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
-        pf_contraseñaEnviarMensaje = new javax.swing.JPasswordField();
+        pf_contraseñaNoUnitec = new javax.swing.JPasswordField();
         jLabel17 = new javax.swing.JLabel();
         tf_destinatarioNoUnitec = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
-        jButton2 = new javax.swing.JButton();
+        ta_descripcionNoUniec = new javax.swing.JTextArea();
+        bt_enviarMensajeNoUnitec = new javax.swing.JButton();
+        jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -310,6 +314,18 @@ public class principal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
+        jMenu2.setText("Inicio");
+
+        jMenuItem8.setText("LogOut");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem8);
+
+        jMenuBar1.add(jMenu2);
+
         jd_buzon.setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout jd_buzonLayout = new javax.swing.GroupLayout(jd_buzon.getContentPane());
@@ -347,9 +363,9 @@ public class principal extends javax.swing.JFrame {
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Destinatario: ");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        ta_descripcion.setColumns(20);
+        ta_descripcion.setRows(5);
+        jScrollPane2.setViewportView(ta_descripcion);
 
         bt_enviarmensajeUsuario.setText("Enviar");
         bt_enviarmensajeUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -414,14 +430,14 @@ public class principal extends javax.swing.JFrame {
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("Destinatario: ");
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane3.setViewportView(jTextArea2);
+        ta_descripcionNoUniec.setColumns(20);
+        ta_descripcionNoUniec.setRows(5);
+        jScrollPane3.setViewportView(ta_descripcionNoUniec);
 
-        jButton2.setText("Enviar");
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+        bt_enviarMensajeNoUnitec.setText("Enviar");
+        bt_enviarMensajeNoUnitec.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton2MouseClicked(evt);
+                bt_enviarMensajeNoUnitecMouseClicked(evt);
             }
         });
 
@@ -440,12 +456,12 @@ public class principal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tf_destinatarioNoUnitec, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pf_contraseñaEnviarMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tf_ingresaNombreEnviarMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pf_contraseñaNoUnitec, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tf_ingresaCorreoNoUnitec, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(280, 280, 280)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(bt_enviarMensajeNoUnitec, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(88, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
@@ -454,11 +470,11 @@ public class principal extends javax.swing.JFrame {
                 .addGap(36, 36, 36)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
-                    .addComponent(tf_ingresaNombreEnviarMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tf_ingresaCorreoNoUnitec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
-                    .addComponent(pf_contraseñaEnviarMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pf_contraseñaNoUnitec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel17)
@@ -466,7 +482,7 @@ public class principal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41)
-                .addComponent(jButton2)
+                .addComponent(bt_enviarMensajeNoUnitec)
                 .addContainerGap(45, Short.MAX_VALUE))
         );
 
@@ -480,6 +496,10 @@ public class principal extends javax.swing.JFrame {
             jd_enviarMensajeNoUnitecLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+
+        jMenuItem6.setText("jMenuItem6");
+
+        jMenuItem7.setText("jMenuItem7");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -568,6 +588,8 @@ public class principal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    //Label que muestra pantalla de ingresar usuario
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         tf_ingresar_nombre.setText("");
         tf_ingresar_correo.setText("");
@@ -580,6 +602,8 @@ public class principal extends javax.swing.JFrame {
         jd_ingresar_usuario.setVisible(true);
     }//GEN-LAST:event_jLabel3MouseClicked
 
+    
+    //Ingresa nuevo usuario
     private void bt_ingresar_usuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_ingresar_usuarioMouseClicked
         AdministrarPersonas dm = new AdministrarPersonas();
         String nombre, apellido="", contraseña="", contraseña_confirmar, nacionalidad="", correo;
@@ -641,11 +665,13 @@ public class principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_bt_ingresar_usuarioMouseClicked
 
+    
+    //LogIn 
     private void bt_loginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_loginMouseClicked
-        String nombre, contraseña;
-        nombre = tf_ingresarNombreLogin.getText();
+        String correo, contraseña;
+        correo = tf_ingresarNombreLogin.getText();
         contraseña  = pf_ingresarContraseñaLogIn.getText();
-        usuarioActivo = LogIn(nombre, contraseña);
+        usuarioActivo = LogIn(correo, contraseña);
         if (usuarioActivo!=null) {
             JOptionPane.showMessageDialog(this, "Bienvenido");
             jd_buzon.pack();
@@ -654,39 +680,53 @@ public class principal extends javax.swing.JFrame {
             jd_buzon.setModal(true);
             jd_buzon.setVisible(true);
         }else{
-            JOptionPane.showMessageDialog(this, "Contraseña o nombre incorrectos");
+            JOptionPane.showMessageDialog(this, "Contraseña o correo incorrectos");
         }
     }//GEN-LAST:event_bt_loginMouseClicked
 
+    
+    //Actualizar Table con la lista de mensajes
     private void bt_actualizarMensajesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_actualizarMensajesMouseClicked
         DefaultTableModel modelo = (DefaultTableModel)jt_mensajes.getModel();
         if (cbx_tipo_mensajes.getSelectedItem().toString().equals("Leidos")) {
-            for (int i = 0; i < usuarioActivo.getLeidos().size(); i++) {
+            if (usuarioActivo.getLeidos().size()>0) {
+                for (int i = 0; i < usuarioActivo.getLeidos().size(); i++) {
                 Object row[] = {usuarioActivo.getLeidos().get(i).getEmisor()+"\n"};
                 modelo.addRow(row);
+                }
             }
         }else if (cbx_tipo_mensajes.getSelectedItem().toString().equals("No leidos")) {
-            for (int i = 0; i < usuarioActivo.getNoleidos().size(); i++) {
-                Object row[] = {usuarioActivo.getNoleidos().get(i).getEmisor()+"\n"};
-                modelo.addRow(row);
+            if (usuarioActivo.getNoleidos().size()>0) {
+                for (int i = 0; i < usuarioActivo.getNoleidos().size(); i++) {
+                    Object row[] = {usuarioActivo.getNoleidos().get(i).getEmisor()+"\n"};
+                    modelo.addRow(row);
+                }
             }
         }else if (cbx_tipo_mensajes.getSelectedItem().toString().equals("Importantes")) {
-            for (int i = 0; i < usuarioActivo.getImportantes().size(); i++) {
-                Object row[] = {usuarioActivo.getImportantes().get(i).getEmisor()+"\n"};
-                modelo.addRow(row);
+            if (usuarioActivo.getImportantes().size()>0) {
+                for (int i = 0; i < usuarioActivo.getImportantes().size(); i++) {
+                    Object row[] = {usuarioActivo.getImportantes().get(i).getEmisor()+"\n"};
+                    modelo.addRow(row);
+                }
             }
         }
     }//GEN-LAST:event_bt_actualizarMensajesMouseClicked
 
+    
+    //Poppup_menu eliminar
     private void EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarActionPerformed
         DefaultTableModel modelo = (DefaultTableModel)jt_mensajes.getModel() ;
         modelo.removeRow(posicion);
     }//GEN-LAST:event_EliminarActionPerformed
 
+    
+    //POPUP_Menu marcarImportante
     private void MarcarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MarcarActionPerformed
         
     }//GEN-LAST:event_MarcarActionPerformed
 
+    
+    //JDialog enviar Mensaje
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         jd_enviarMensaje.pack();
         jd_enviarMensaje.setModal(true);
@@ -694,19 +734,30 @@ public class principal extends javax.swing.JFrame {
         jd_enviarMensaje.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    
+    //Enviar Mensajes
     private void bt_enviarmensajeUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_enviarmensajeUsuarioMouseClicked
-        String nombre;
+        String nombre, descripcion;
+        AdministrarPersonas adm = new AdministrarPersonas();
         try {
             nombre = tf_destinatario.getText();
+            descripcion = ta_descripcion.getText();
             for (Persona t : personas) {
                 if (t.getNombre().equals(nombre)) {
-                    //Sobreescribir archivo
+                    //Añade el mensaje al arrayList de usuarios y al usuario que se envio
+                    usuarioActivo.getEnviados().add(new Mensaje(descripcion, nombre));
+                    t.getNoleidos().add(new Mensaje(descripcion, nombre));
+                    //Escribe en los archivos de texto
+                    //adm.escribirEnviados(nombre, usuarioActivo);
+                    
                 }
             }
         } catch (Exception e) {
         }
     }//GEN-LAST:event_bt_enviarmensajeUsuarioMouseClicked
 
+    
+    //Label envia ventana de usuarios no unitec
     private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
         jd_enviarMensajeNoUnitec.pack();
         jd_enviarMensajeNoUnitec.setModal(true);
@@ -714,10 +765,30 @@ public class principal extends javax.swing.JFrame {
         jd_enviarMensajeNoUnitec.setVisible(true);
     }//GEN-LAST:event_jLabel14MouseClicked
 
-    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-        String nombre;
-    }//GEN-LAST:event_jButton2MouseClicked
+    private void bt_enviarMensajeNoUnitecMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_enviarMensajeNoUnitecMouseClicked
+        String correo, contraseña, destinatario;
+        boolean usuario = false;
+        correo = tf_destinatarioNoUnitec.getText();
+        contraseña = pf_contraseñaNoUnitec.getText();
+        destinatario = tf_destinatarioNoUnitec.getText();
+        for (Persona t : personas) {
+            if (t.getCorreo().equals(correo)&&t.getCorreo().contains("@unitec.edu")==false) {
+                usuario = true;
+            }
+        }
+        if (usuario) {
+            for (Persona a : personas) {
+                if (a.getCorreo().equals(destinatario)) {
+                    
+                }
+            }
+        }else{
+        
+        }
+    }//GEN-LAST:event_bt_enviarMensajeNoUnitecMouseClicked
 
+    
+    //Accion que muestra el popup menu
     private void jt_mensajesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_mensajesMouseClicked
         if (evt.isMetaDown()) {
             posicion = jt_mensajes.getSelectedRowCount();
@@ -725,9 +796,16 @@ public class principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jt_mensajesMouseClicked
 
-    public Persona LogIn(String nombre, String contraseña){
+    //LogOut
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        usuarioActivo = null;
+        jd_buzon.setVisible(false);
+        JOptionPane.showMessageDialog(jMenu1, "Hasta la vista baby ;v ");
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+    public Persona LogIn(String correo, String contraseña){
         for (Persona t : personas) {
-            if (t.getNombre().equals(nombre)&&t.getContraseña().equals(contraseña)) {
+            if (t.getCorreo().equals(correo)&&t.getCorreo().contains("@unitec.edu")) {
                 return t;
             }
         }
@@ -780,13 +858,13 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem Eliminar;
     private javax.swing.JMenuItem Marcar;
     private javax.swing.JButton bt_actualizarMensajes;
+    private javax.swing.JButton bt_enviarMensajeNoUnitec;
     private javax.swing.JButton bt_enviarmensajeUsuario;
     private javax.swing.JButton bt_ingresar_usuario;
     private javax.swing.JButton bt_login;
     private javax.swing.JComboBox<String> cbx_nacionalidad;
     private javax.swing.JComboBox<String> cbx_tipo_mensajes;
     private com.toedter.calendar.JDateChooser dc_fecha_nacimiento;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -806,12 +884,16 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -821,22 +903,22 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JDialog jd_buzon;
     private javax.swing.JDialog jd_enviarMensaje;
     private javax.swing.JDialog jd_enviarMensajeNoUnitec;
     private javax.swing.JDialog jd_ingresar_usuario;
     private javax.swing.JTable jt_mensajes;
     private javax.swing.JPasswordField pf_confirmar_contraseña;
-    private javax.swing.JPasswordField pf_contraseñaEnviarMensaje;
+    private javax.swing.JPasswordField pf_contraseñaNoUnitec;
     private javax.swing.JPasswordField pf_ingresarContraseñaLogIn;
     private javax.swing.JPasswordField pf_ingresar_contraseña;
     private javax.swing.JPopupMenu pop_opciones;
+    private javax.swing.JTextArea ta_descripcion;
+    private javax.swing.JTextArea ta_descripcionNoUniec;
     private javax.swing.JTextField tf_apellido;
     private javax.swing.JTextField tf_destinatario;
     private javax.swing.JTextField tf_destinatarioNoUnitec;
-    private javax.swing.JTextField tf_ingresaNombreEnviarMensaje;
+    private javax.swing.JTextField tf_ingresaCorreoNoUnitec;
     private javax.swing.JTextField tf_ingresarNombreLogin;
     private javax.swing.JTextField tf_ingresar_correo;
     private javax.swing.JTextField tf_ingresar_nombre;
