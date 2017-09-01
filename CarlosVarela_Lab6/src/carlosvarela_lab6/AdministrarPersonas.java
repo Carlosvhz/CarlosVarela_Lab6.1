@@ -86,7 +86,9 @@ public class AdministrarPersonas {
         bw.close();
     }
     
-    public void escribirArchivo(){
+    public void escribirArchivo(String destinatario, Persona usuario){
+        FileWriter fw;
+        BufferedWriter bw;
         
     }
 }
