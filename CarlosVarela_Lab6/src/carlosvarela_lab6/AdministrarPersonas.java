@@ -94,7 +94,7 @@ public class AdministrarPersonas {
             fw = new FileWriter(archivo, false);
             bw = new BufferedWriter(fw);
             bw.write(destinatario+";");
-            bw.write(descripcion+";");
+            bw.write(descripcion+";\n");
             bw.flush();
         } catch (Exception e) {
         }
@@ -102,7 +102,19 @@ public class AdministrarPersonas {
         bw.close();
     }
     
-    public void escribirNoleidos(){
-        
+    public void escribirNoleidos(String descripcion, String mando, Persona usuario) throws IOException{
+        FileWriter fw = null;
+        BufferedWriter bw = null;
+        File archivo = new File ("./usuarios/"+usuario.getNombre()+"/"+"Noleidos"+".txt"); //Tener el archivo
+        try {
+            fw = new FileWriter(archivo, false);
+            bw = new BufferedWriter(fw);
+            bw.write(mando+";");
+            bw.write(descripcion+";\n");
+            bw.flush();
+        } catch (Exception e) {
+        }
+        fw.close();
+        bw.close();
     }
 }

@@ -664,6 +664,9 @@ public class principal extends javax.swing.JFrame {
         usuarioActivo = LogIn(correo, contraseña);
         if (usuarioActivo!=null) {
             JOptionPane.showMessageDialog(this, "Bienvenido");
+            this.setVisible(false);
+            tf_ingresarNombreLogin.setText("");
+            pf_ingresarContraseñaLogIn.setText("");
             jd_buzon.pack();
             jd_buzon.dispose();
             jd_buzon.setLocationRelativeTo(null);
@@ -707,6 +710,7 @@ public class principal extends javax.swing.JFrame {
     private void EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarActionPerformed
         DefaultTableModel modelo = (DefaultTableModel)jt_mensajes.getModel() ;
         modelo.removeRow(posicion);
+        jt_mensajes.setModel(modelo);
     }//GEN-LAST:event_EliminarActionPerformed
 
     
@@ -740,6 +744,7 @@ public class principal extends javax.swing.JFrame {
                     t.getNoleidos().add(new Mensaje(descripcion, usuarioActivo.getNombre()));
                     //Escribe en los archivos de texto
                     adm.escribirEnviados(descripcion,nombre,usuarioActivo);
+                    adm.escribirNoleidos(descripcion, usuarioActivo.getNombre(), t);
                     JOptionPane.showMessageDialog(null, "Mensaje enviado");
                     tf_destinatario.setText("");
                     ta_descripcion.setText("");
@@ -803,6 +808,7 @@ public class principal extends javax.swing.JFrame {
         usuarioActivo = null;
         jd_buzon.setVisible(false);
         JOptionPane.showMessageDialog(jMenu1, "Hasta la vista baby ;v ");
+        this.setVisible(true);
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     public Persona LogIn(String correo, String contraseña){
