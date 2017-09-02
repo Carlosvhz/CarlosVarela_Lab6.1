@@ -47,9 +47,6 @@ public class principal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem8 = new javax.swing.JMenuItem();
@@ -299,15 +296,6 @@ public class principal extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMenuItem1);
-
-        jMenuItem2.setText("No deseados");
-        jMenu1.add(jMenuItem2);
-
-        jMenuItem3.setText("Spam");
-        jMenu1.add(jMenuItem3);
-
-        jMenuItem4.setText("Borradores");
-        jMenu1.add(jMenuItem4);
 
         jMenuItem5.setText("Enviados");
         jMenu1.add(jMenuItem5);
@@ -651,6 +639,8 @@ public class principal extends javax.swing.JFrame {
                             tf_ingresar_telefono.setText("");
                             pf_confirmar_contraseña.setText("");
                             pf_ingresar_contraseña.setText("");
+                            tf_apellido.setText("");
+                            dc_fecha_nacimiento.setDate(null);
                             JOptionPane.showMessageDialog(null, "Usuario Registrado");
                         }else {
                             JOptionPane.showMessageDialog(null, "Confirme bien su contraseña");
@@ -722,7 +712,8 @@ public class principal extends javax.swing.JFrame {
     
     //POPUP_Menu marcarImportante
     private void MarcarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MarcarActionPerformed
-        
+        DefaultTableModel modelo = (DefaultTableModel)jt_mensajes.getModel() ;
+        modelo.removeRow(posicion);
     }//GEN-LAST:event_MarcarActionPerformed
 
     
@@ -746,10 +737,12 @@ public class principal extends javax.swing.JFrame {
                 if (t.getNombre().equals(nombre)) {
                     //Añade el mensaje al arrayList de usuarios y al usuario que se envio
                     usuarioActivo.getEnviados().add(new Mensaje(descripcion, nombre));
-                    t.getNoleidos().add(new Mensaje(descripcion, nombre));
+                    t.getNoleidos().add(new Mensaje(descripcion, usuarioActivo.getNombre()));
                     //Escribe en los archivos de texto
-                    //adm.escribirEnviados(nombre, usuarioActivo);
-                    
+                    adm.escribirEnviados(descripcion,nombre,usuarioActivo);
+                    JOptionPane.showMessageDialog(null, "Mensaje enviado");
+                    tf_destinatario.setText("");
+                    ta_descripcion.setText("");
                 }
             }
         } catch (Exception e) {
@@ -765,25 +758,34 @@ public class principal extends javax.swing.JFrame {
         jd_enviarMensajeNoUnitec.setVisible(true);
     }//GEN-LAST:event_jLabel14MouseClicked
 
+    
+    //Envia mensaje usuarios no de unitec
     private void bt_enviarMensajeNoUnitecMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_enviarMensajeNoUnitecMouseClicked
-        String correo, contraseña, destinatario;
-        boolean usuario = false;
+        String correo, contraseña, destinatario, descripcion;
+        Persona usuario =null;
         correo = tf_destinatarioNoUnitec.getText();
         contraseña = pf_contraseñaNoUnitec.getText();
         destinatario = tf_destinatarioNoUnitec.getText();
+        descripcion = ta_descripcionNoUniec.getText();
+        //Evaluar correo no unitec
         for (Persona t : personas) {
             if (t.getCorreo().equals(correo)&&t.getCorreo().contains("@unitec.edu")==false) {
-                usuario = true;
+                usuario = t;
             }
         }
-        if (usuario) {
+        if (usuario!=null) {
             for (Persona a : personas) {
-                if (a.getCorreo().equals(destinatario)) {
-                    
+                if (a.getCorreo().equals(destinatario)&&destinatario.contains("@unitec.edu")) {
+                    usuario.getEnviados().add(new Mensaje(descripcion, a.getNombre()));
+                    tf_destinatarioNoUnitec.setText("");
+                    pf_contraseñaNoUnitec.setText("");
+                    tf_destinatarioNoUnitec.setText("");
+                    ta_descripcionNoUniec.setText("");
+                    JOptionPane.showMessageDialog(null, "Se envio mensaje");
                 }
             }
         }else{
-        
+            JOptionPane.showMessageDialog(null, "No se encontro usuario");
         }
     }//GEN-LAST:event_bt_enviarMensajeNoUnitecMouseClicked
 
@@ -887,9 +889,6 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
