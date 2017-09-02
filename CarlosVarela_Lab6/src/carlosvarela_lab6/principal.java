@@ -742,6 +742,7 @@ public class principal extends javax.swing.JFrame {
     //Actualizar Table con la lista de mensajes
     private void bt_actualizarMensajesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_actualizarMensajesMouseClicked
         DefaultTableModel modelo = (DefaultTableModel)jt_mensajes.getModel();
+        modelo.setRowCount(0);
         if (cbx_tipo_mensajes.getSelectedItem().toString().equals("leidos")) {
             if (usuarioActivo.getLeidos().size()>0) {
                 for (int i = 0; i < usuarioActivo.getLeidos().size(); i++) {
@@ -859,7 +860,7 @@ public class principal extends javax.swing.JFrame {
     //Accion que muestra el popup menu
     private void jt_mensajesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_mensajesMouseClicked
         if (evt.isMetaDown()) {
-            posicion = jt_mensajes.getSelectedRowCount();
+            posicion = jt_mensajes.getSelectedRow();
             pop_opciones.show(jt_mensajes, evt.getY(), evt.getX());
         }
     }//GEN-LAST:event_jt_mensajesMouseClicked
